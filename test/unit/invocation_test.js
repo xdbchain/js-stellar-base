@@ -18,13 +18,13 @@ const {
 // Though this may feel contrived (because it is), it highlights the importance
 // of presenting complex invocation trees in a friendly manner to users.
 //
-// purchase("SomeNft:G...", 7 xlm)
+// purchase("SomeNft:G...", 7 xdb)
 //     |
 //     +--- create(wrap: "SomeNft:G...")
 //     |
-//     +--- swap(xlm, usdc, from, to)
+//     +--- swap(xdb, usdc, from, to)
 //     |      |
-//     |      |- xlm.transfer(from, to, 7)
+//     |      |- xdb.transfer(from, to, 7)
 //     |      |
 //     |      |- usdc.transfer(to, from, 1)
 //     |
@@ -47,7 +47,7 @@ function makeInvocation(contract, name, ...args) {
 
 describe('parsing invocation trees', function () {
   const invoker = rk();
-  const [nftContract, swapContract, xlmContract, usdcContract] = [
+  const [nftContract, swapContract, xdbContract, usdcContract] = [
     1, 2, 3, 4
   ].map(() => {
     // ezpz method to generate random contract IDs
@@ -86,7 +86,7 @@ describe('parsing invocation trees', function () {
         subInvocations: [
           new xdr.SorobanAuthorizedInvocation({
             function: makeInvocation(
-              xlmContract,
+              xdbContract,
               'transfer',
               new Address(invoker).toScVal(),
               '7'
@@ -161,7 +161,7 @@ describe('parsing invocation trees', function () {
           {
             type: 'execute',
             args: {
-              source: xlmContract.contractId(),
+              source: xdbContract.contractId(),
               function: 'transfer',
               args: [invoker, '7']
             },
