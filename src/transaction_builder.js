@@ -75,7 +75,7 @@ export const TimeoutInfinite = 0;
  *     destination: destinationB,
  *     amount: "100",
  *     asset: Asset.native()
- * })) // <- sends 100 XLM to destinationB
+ * })) // <- sends 100 XDB to destinationB
  * .setTimeout(30)
  * .build();
  *
