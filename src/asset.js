@@ -6,11 +6,11 @@ import { Keypair } from './keypair';
 import { StrKey } from './strkey';
 
 /**
- * Asset class represents an asset, either the native asset (`XLM`)
+ * Asset class represents an asset, either the native asset (`XDB`)
  * or an asset code / issuer account ID pair.
  *
  * An asset code describes an asset code and issuer pair. In the case of the native
- * asset XLM, the issuer will be null.
+ * asset XDB, the issuer will be null.
  *
  * @constructor
  * @param {string} code - The asset code.
@@ -23,16 +23,16 @@ export class Asset {
         'Asset code is invalid (maximum alphanumeric, 12 characters at max)'
       );
     }
-    if (String(code).toLowerCase() !== 'xlm' && !issuer) {
+    if (String(code).toLowerCase() !== 'xdb' && !issuer) {
       throw new Error('Issuer cannot be null');
     }
     if (issuer && !StrKey.isValidEd25519PublicKey(issuer)) {
       throw new Error('Issuer is invalid');
     }
 
-    if (String(code).toLowerCase() === 'xlm') {
-      // transform all xLM, Xlm, etc. variants -> XLM
-      this.code = 'XLM';
+    if (String(code).toLowerCase() === 'xdb') {
+      // transform all xDB, Xdb, etc. variants -> XDB
+      this.code = 'XDB';
     } else {
       this.code = code;
     }
@@ -45,7 +45,7 @@ export class Asset {
    * @Return {Asset}
    */
   static native() {
-    return new Asset('XLM');
+    return new Asset('XDB');
   }
 
   /**

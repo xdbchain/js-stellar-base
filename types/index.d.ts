@@ -219,7 +219,7 @@ export class Memo<T extends MemoType = MemoType> {
 
 export enum Networks {
   PUBLIC = 'Public Global Stellar Network ; September 2015',
-  TESTNET = 'Test SDF Network ; September 2015'
+  TESTNET = 'Futurenet XDBChain Network ; October 2023'
 }
 
 export const AuthRequiredFlag: 1;

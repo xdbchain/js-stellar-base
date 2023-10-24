@@ -12,7 +12,7 @@ title: Transaction Examples
 
 In the example below a new account is created by the source account with secret 
 `SA3W53XXG64ITFFIYQSBIJDG26LMXYRIMEVMNQMFAQJOYCZACCYBA34L`. The source account 
-is giving the new account 25 XLM as its initial balance.
+is giving the new account 25 XDB as its initial balance.
 
 
 ```javascript
@@ -47,7 +47,7 @@ server.accounts()
 
 ## Assets
 Object of the `Asset` class represents an asset in the Stellar network. Right now there are 3 possible types of assets in the Stellar network:
-* native `XLM` asset (`ASSET_TYPE_NATIVE`),
+* native `XDB` asset (`ASSET_TYPE_NATIVE`),
 * issued assets with asset code of maximum 4 characters (`ASSET_TYPE_CREDIT_ALPHANUM4`),
 * issued assets with asset code of maximum 12 characters (`ASSET_TYPE_CREDIT_ALPHANUM12`).
 
@@ -69,14 +69,14 @@ var googleStockAsset = new StellarSdk.Asset('US38259P7069', 'GBBM6BKZPEHWYO3E3YK
 
 ## Path payment
 
-In the example below we're sending 1000 XLM (at max) from `GABJLI6IVBKJ7HIC5NN7HHDCIEW3CMWQ2DWYHREQQUFWSWZ2CDAMZZX4` to
+In the example below we're sending 1000 XDB (at max) from `GABJLI6IVBKJ7HIC5NN7HHDCIEW3CMWQ2DWYHREQQUFWSWZ2CDAMZZX4` to
 `GBBM6BKZPEHWYO3E3YKREDPQXMS4VK35YLNU7NFBRI26RAN7GI5POFBB`. Destination Asset will be `GBP` issued by
 `GASOCNHNNLYFNMDJYQ3XFMI7BYHIOCFW3GJEOWRPEGK2TDPGTG2E5EDW`. Assets will be exchanged using the following path:
 
 * `USD` issued by `GBBM6BKZPEHWYO3E3YKREDPQXMS4VK35YLNU7NFBRI26RAN7GI5POFBB`,
 * `EUR` issued by `GDTNXRLOJD2YEBPKK7KCMR7J33AAG5VZXHAJTHIG736D6LVEFLLLKPDL`.
 
-The [path payment](https://developers.stellar.org/docs/start/list-of-operations/#path-payment-strict-receive) will cause the destination address to get 5.5 GBP. It will cost the sender no more than 1000 XLM. In this example there will be 3 exchanges, XLM -> USD, USD-> EUR, EUR->GBP.
+The [path payment](https://developers.stellar.org/docs/start/list-of-operations/#path-payment-strict-receive) will cause the destination address to get 5.5 GBP. It will cost the sender no more than 1000 XDB. In this example there will be 3 exchanges, XDB -> USD, USD-> EUR, EUR->GBP.
 
 ```js
 var keypair = StellarSdk.Keypair.fromSecret(secretString);
@@ -161,7 +161,7 @@ var transaction = new StellarSdk.TransactionBuilder(account, {
     .addOperation(StellarSdk.Operation.payment({
         destination: "GBTVUCDT5CNSXIHJTDHYSZG3YJFXBAJ6FM4CKS5GKSAWJOLZW6XX7NVC",
         asset: StellarSdk.Asset.native(),
-        amount: "2000" // 2000 XLM
+        amount: "2000" // 2000 XDB
     }))
     .setTimeout(30)
     .build();
