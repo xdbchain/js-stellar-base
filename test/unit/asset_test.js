@@ -1,6 +1,6 @@
 describe('Asset', function() {
   describe('constructor', function() {
-    it("throws an error when there's no issuer for non XLM type asset", function() {
+    it("throws an error when there's no issuer for non XDB type asset", function() {
       expect(() => new StellarBase.Asset('USD')).to.throw(
         /Issuer cannot be null/
       );
@@ -40,7 +40,7 @@ describe('Asset', function() {
   describe('getCode()', function() {
     it('returns a code for a native asset object', function() {
       var asset = new StellarBase.Asset.native();
-      expect(asset.getCode()).to.be.equal('XLM');
+      expect(asset.getCode()).to.be.equal('XDB');
     });
 
     it('returns a code for a non-native asset', function() {
@@ -299,14 +299,14 @@ describe('Asset', function() {
     });
 
     it('returns false if assets are equal', function() {
-      const XLM = new StellarBase.Asset.native();
-      expect(StellarBase.Asset.compare(XLM, XLM)).to.eq(0);
+      const XDB = new StellarBase.Asset.native();
+      expect(StellarBase.Asset.compare(XDB, XDB)).to.eq(0);
       expect(StellarBase.Asset.compare(assetA, assetA)).to.eq(0);
       expect(StellarBase.Asset.compare(assetB, assetB)).to.eq(0);
     });
 
     it('test if asset types are being validated as native < anum4 < anum12', function() {
-      const XLM = new StellarBase.Asset.native();
+      const XDB = new StellarBase.Asset.native();
       const anum4 = new StellarBase.Asset(
         'ARST',
         'GB7TAYRUZGE6TVT7NHP5SMIZRNQA6PLM423EYISAOAP3MKYIQMVYP2JO'
@@ -316,15 +316,15 @@ describe('Asset', function() {
         'GB7TAYRUZGE6TVT7NHP5SMIZRNQA6PLM423EYISAOAP3MKYIQMVYP2JO'
       );
 
-      expect(StellarBase.Asset.compare(XLM, XLM)).to.eq(0);
-      expect(StellarBase.Asset.compare(XLM, anum4)).to.eq(-1);
-      expect(StellarBase.Asset.compare(XLM, anum12)).to.eq(-1);
+      expect(StellarBase.Asset.compare(XDB, XDB)).to.eq(0);
+      expect(StellarBase.Asset.compare(XDB, anum4)).to.eq(-1);
+      expect(StellarBase.Asset.compare(XDB, anum12)).to.eq(-1);
 
-      expect(StellarBase.Asset.compare(anum4, XLM)).to.eq(1);
+      expect(StellarBase.Asset.compare(anum4, XDB)).to.eq(1);
       expect(StellarBase.Asset.compare(anum4, anum4)).to.eq(0);
       expect(StellarBase.Asset.compare(anum4, anum12)).to.eq(-1);
 
-      expect(StellarBase.Asset.compare(anum12, XLM)).to.eq(1);
+      expect(StellarBase.Asset.compare(anum12, XDB)).to.eq(1);
       expect(StellarBase.Asset.compare(anum12, anum4)).to.eq(1);
       expect(StellarBase.Asset.compare(anum12, anum12)).to.eq(0);
     });
