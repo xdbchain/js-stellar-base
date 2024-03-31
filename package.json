@@ -1,6 +1,6 @@
 {
   "name": "@xdbchain/js-stellar-base",
-  "version": "9.0.0",
+  "version": "9.0.1",
   "description": "Low-level support library for the XDBchain network.",
   "main": "./lib/index.js",
   "browser": {
