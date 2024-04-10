@@ -381,14 +381,14 @@ describe('Asset', function () {
       [
         [
           Asset.native(),
-          'CB64D3G7SM2RTH6JSGG34DDTFTQ5CFDKVDZJZSODMCX4NJ2HV2KN7OHT'
+          'CCNHGUCRHSS4UGSW65FN4IFKZBT3WA5HJBB4KNJ3Z5LRUAADVPEC3LO4'
         ],
         [
           new Asset(
             'USD',
             'GCP2QKBFLLEEWYVKAIXIJIJNCZ6XEBIE4PCDB6BF3GUB6FGE2RQ3HDVP'
           ),
-          'CCWNZPARJG7KQ6N4BGZ5OBWKSSK4AVQ5URLDRXB4ZJXKGEJQTIIRPAHN'
+          'CAPHEGCI77M5Z54CNBGU7ZIDZ53DEYZNWGGGV7PZF722CKQYKFYNKVXS'
         ]
       ].forEach(([asset, contractId]) => {
         expect(asset.contractId(StellarBase.Networks.FUTURENET)).to.equal(
