@@ -1,7 +1,7 @@
 {
-  "name": "@digitalbits-blockchain/js-stellar-base",
-  "version": "1.0.3",
-  "description": "Low level stellar support library",
+  "name": "@xdbchain/js-stellar-base",
+  "version": "9.0.3",
+  "description": "Low-level support library for the XDB CHAIN network",
   "main": "./lib/index.js",
   "types": "./types/index.d.ts",
   "scripts": {
