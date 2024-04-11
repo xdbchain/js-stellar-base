@@ -1,28 +1,32 @@
 name: npm publish
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - release/8.2.2
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Install Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: '14.x'
+          node-version: 14
           registry-url: 'https://registry.npmjs.org'
+
+      - name: Authenticate with private NPM package
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
 
       - name: Install Depencencies
         run: yarn
 
-      - name: Build
+      - name: Build and Package
         run: gulp
 
       - name: Publish npm package
-        run: yarn publish
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
